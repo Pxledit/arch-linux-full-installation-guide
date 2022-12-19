@@ -1,3 +1,4 @@
+# UEFI ONLY
 # arch-linux-full-installation-guide
 
 ##### Check if there is an Internet connection (if on wired)
