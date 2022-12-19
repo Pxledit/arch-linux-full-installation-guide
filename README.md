@@ -167,21 +167,22 @@ systemctl enable NetworkManager
 ##### Add LVM support
 ```
 pacman -S lvm2
+```
 ##### Edit /etc/mkinitcpio.conf
 ```
 nano /etc/mkinitcpio.conf
 ```
 ###### On the “HOOKS” line, add support for lvm2 and optionally encryption.
 
-unencrypted hard disk:
-Add “lvm2” in between “block” and “filesystems”
+##### unencrypted hard disk:
+##### Add “lvm2” in between “block” and “filesystems”
 
-encrypted hard disk:
-Add “encrypt lvm2” in between “block” and “filesystems”
+##### encrypted hard disk:
+##### Add “encrypt lvm2” in between “block” and “filesystems”
 
-It should look similar to the following (don’t copy this line in case they change it, but just add the required new items):
+##### It should look similar to the following (don’t copy this line in case they change it, but just add the required new items):
 
-HOOKS=(base udev autodetect modconf block encrypt lvm2 filesystems keyboard fsck)
+##### HOOKS=(base udev autodetect modconf block encrypt lvm2 filesystems keyboard fsck)
 ##### Create the initial ramdisk for the main kernel
 ```
 mkinitcpio -p linux
@@ -231,8 +232,8 @@ EDITOR=nano visudo
 ```
 pacman -S grub efibootmgr dosfstools os-prober mtools
 ```
-```
-Create the EFI directory:
+
+##### Create the EFI directory:
 ```
 mkdir /boot/EFI
 ```
@@ -290,7 +291,7 @@ mkswap /swapfile
 ```
 ##### Add the swap file to the /etc/fstab file
  ```
- echo '/swapfile none swap sw 0 0' | tee -a /etc/fstab
+echo '/swapfile none swap sw 0 0' | tee -a /etc/fstab
 ```
 ##### Set time zone
 ###### List time zones:
@@ -320,34 +321,48 @@ nano /etc/hosts
 127.0.1.1 (myhostname)
 ```
 Install CPU Microde files (AMD CPU)
-pacman -S amd-ucode
+```pacman -S amd-ucode
+```
 Install CPU Microde files (Intel CPU)
+```
 pacman -S intel-ucode
+```
 Install Xorg if you plan on having a GUI
+```
 pacman -S xorg-server
+```
 Install 3D support for Intel or AMD graphics
 If you have an Intel or AMD GPU, install the mesa package:
-
+```
 pacman -S mesa
+```
 Install Nvidia Driver packages if you have an Nvidia GPU
+```
 pacman -S nvidia nvidia-utils
+```
 Note: Install nvidia-lts if you’ve installed the LTS kernel:
-
+```
 pacman -S nvidia-lts
+```
 Install Virtualbox guest packages
 If you’re installing Arch inside a Virtualbox virtual machine, install these packages:
-
+```
 pacman -S virtualbox-guest-utils xf86-video-vmware
+```
 Installing a Desktop Environment
 GNOME
 To install GNOME, install the gnome package:
-
+```
 sudo pacman -S gnome
-Also consider installing GNOME Tweaks:
-
-sudo pacman -S gnome-tweaks
+```
+##### Also consider installing GNOME Tweaks:
+```
+ sudo pacman -S gnome-tweaks
+ ```
 To enable the login screen to appear automatically at boot, run:
 
+``` 
 sudo systemctl enable gdm
+```
 Note: At first login, one or more GNOME apps may fail to start. You might see a spinning circle or equivelant, and then the app never appears. To prevent this situation, you should first open GNOME’s settings, then “Region and Language”, and set your info there
 
